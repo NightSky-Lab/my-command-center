@@ -28,10 +28,10 @@ Panduan mudah (~10 minit) untuk memiliki sistem pengurusan Pendidikan Islam **an
    - Klik **Create new project** → tunggu ~2 minit.
 3. Di menu kiri, klik **SQL Editor** → **+ New query**.
 4. Buka fail ini dalam tab baharu, klik butang **Raw**, pilih semua (Ctrl+A), salin (Ctrl+C):
-   👉 **https://raw.githubusercontent.com/NightSky-Lab/mypi-command-center/main/supabase/schema.sql**
+   👉 **https://raw.githubusercontent.com/NightSky-Lab/my-command-center/main/supabase/schema.sql**
    Tampal (Ctrl+V) ke dalam SQL Editor Supabase → klik **Run** ▶️ (tunggu "Success").
 5. Klik **+ New query** lagi. Buka fail kedua, salin & tampal cara sama:
-   👉 **https://raw.githubusercontent.com/NightSky-Lab/mypi-command-center/main/supabase/seed.sql**
+   👉 **https://raw.githubusercontent.com/NightSky-Lab/my-command-center/main/supabase/seed.sql**
    → klik **Run** ▶️.
 6. Di menu kiri klik **⚙️ Project Settings → API**. **Salin & simpan 2 perkara ini** (kita guna sekejap lagi):
    - **Project URL** (cth `https://abcd1234.supabase.co`)
@@ -43,7 +43,7 @@ Panduan mudah (~10 minit) untuk memiliki sistem pengurusan Pendidikan Islam **an
 
 1. Klik butang ini:
 
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNightSky-Lab%2Fmypi-command-center&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Kunci%20Supabase%20(Project%20URL%20%26%20anon%20public%20key)&project-name=mypi-command-center&repository-name=mypi-command-center)
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNightSky-Lab%2Fmy-command-center&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Kunci%20Supabase%20(Project%20URL%20%26%20anon%20public%20key)&project-name=my-command-center&repository-name=my-command-center)
 
 2. **Log masuk Vercel** (guna GitHub). Jika diminta, benarkan Vercel & buat akaun GitHub.
 3. Vercel akan minta **Environment Variables** — isi dengan 2 perkara dari Bahagian 1 (Langkah 6):
@@ -52,7 +52,7 @@ Panduan mudah (~10 minit) untuk memiliki sistem pengurusan Pendidikan Islam **an
    | `NEXT_PUBLIC_SUPABASE_URL` | *Project URL anda* |
    | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | *anon public key anda* |
 4. Klik **Deploy** → tunggu ~2 minit.
-5. 🎉 Siap! Anda akan dapat link seperti **`https://mypi-command-center-xxxx.vercel.app`**.
+5. 🎉 Siap! Anda akan dapat link seperti **`https://my-command-center-xxxx.vercel.app`**.
 
 ---
 

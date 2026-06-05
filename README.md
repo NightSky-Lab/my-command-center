@@ -10,7 +10,7 @@ Dibina dengan **Next.js 15 · React · TypeScript · Tailwind CSS · komponen al
 
 Mahu sistem ini untuk diri/sekolah anda sendiri? Klik butang di bawah — salinan akan disalin ke akaun anda + terbit ke pelayan anda sendiri. **Data 100% milik anda.**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNightSky-Lab%2Fmypi-command-center&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Kunci%20Supabase%20(Project%20URL%20%26%20anon%20public%20key)&project-name=mypi-command-center&repository-name=mypi-command-center)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNightSky-Lab%2Fmy-command-center&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Kunci%20Supabase%20(Project%20URL%20%26%20anon%20public%20key)&project-name=my-command-center&repository-name=my-command-center)
 
 📖 **Panduan penuh langkah demi langkah:** lihat **[`PASANG-SENDIRI.md`](./PASANG-SENDIRI.md)** (Bahasa Melayu, ~10 minit, percuma).
 
