@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description: s.banner_slogan,
     icons: {
       icon: "/icon.svg",
-      apple: "/icon.svg",
-      shortcut: "/icon.svg",
+      apple: "/icon-192.png",
+      shortcut: "/icon-512.png",
     },
     appleWebApp: {
       capable: true,
