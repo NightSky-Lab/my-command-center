@@ -14,8 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: s.banner_slogan,
     icons: {
-      icon:
-        "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕌</text></svg>",
+      icon: "/icon.svg",
+      apple: "/icon.svg",
+      shortcut: "/icon.svg",
+    },
+    appleWebApp: {
+      capable: true,
+      title: "MyPI",
+      statusBarStyle: "black-translucent",
     },
   };
 }

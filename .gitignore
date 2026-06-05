@@ -30,3 +30,7 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# gambar rujukan / data peribadi (jangan naik ke GitHub)
+muka depan website.png
+*.reference.png
