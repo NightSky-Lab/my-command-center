@@ -4,7 +4,6 @@ import * as React from "react";
 import { ChevronLeft, ChevronRight, MapPin, Plus, Pencil, Trash2, CalendarDays, AlertCircle } from "lucide-react";
 import type { CalendarEvent } from "@/lib/types";
 import { cn, monthName } from "@/lib/utils";
-import { seedToday } from "@/lib/seed-data";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { usePersistentRows } from "@/lib/use-persistent";
 import { TABLES } from "@/lib/tables";
@@ -23,7 +22,6 @@ const ACCENTS = [
 const dotOf = (a: string) => ACCENTS.find((x) => x.key === a)?.dot ?? "bg-emerald-500";
 const softOf = (a: string) => ACCENTS.find((x) => x.key === a)?.soft ?? ACCENTS[0].soft;
 
-const todayIso = `${seedToday.year}-${String(seedToday.month + 1).padStart(2, "0")}-${String(seedToday.day).padStart(2, "0")}`;
 const isoOf = (y: number, m: number, d: number) =>
   `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 const prettyDate = (iso: string) => {
@@ -35,7 +33,17 @@ const blankEvent = (iso: string): CalendarEvent => ({ id: "", title: "", date: i
 export function CalendarView({ events: initialEvents }: { events: CalendarEvent[] }) {
   const supabase = getSupabaseBrowser();
   const [events, setEvents] = usePersistentRows<CalendarEvent>("mypi-calendar", initialEvents, !supabase);
-  const [view, setView] = React.useState({ y: seedToday.year, m: seedToday.month });
+  // Ikut tarikh SEBENAR hari ini (auto). Di-gate dengan mount untuk elak hydration mismatch.
+  const [today, setToday] = React.useState<{ y: number; m: number; d: number } | null>(null);
+  React.useEffect(() => {
+    const n = new Date();
+    setToday({ y: n.getFullYear(), m: n.getMonth(), d: n.getDate() });
+  }, []);
+  const todayIso = today ? isoOf(today.y, today.m, today.d) : "";
+  const [view, setView] = React.useState(() => {
+    const n = new Date();
+    return { y: n.getFullYear(), m: n.getMonth() };
+  });
   const [dayDate, setDayDate] = React.useState<string | null>(null); // dialog: hari dipilih
   const [formOpen, setFormOpen] = React.useState(false);
   const [editing, setEditing] = React.useState<CalendarEvent | null>(null);
@@ -131,7 +139,7 @@ export function CalendarView({ events: initialEvents }: { events: CalendarEvent[
               <button type="button" onClick={() => move(-1)} aria-label="Bulan sebelum" className="flex size-8 items-center justify-center rounded-md border border-border hover:bg-muted">
                 <ChevronLeft className="size-4" />
               </button>
-              <button type="button" onClick={() => setView({ y: seedToday.year, m: seedToday.month })} className="rounded-md border border-border px-3 text-xs font-medium hover:bg-muted">
+              <button type="button" onClick={() => { const n = new Date(); setView({ y: n.getFullYear(), m: n.getMonth() }); }} className="rounded-md border border-border px-3 text-xs font-medium hover:bg-muted">
                 Hari Ini
               </button>
               <button type="button" onClick={() => move(1)} aria-label="Bulan seterusnya" className="flex size-8 items-center justify-center rounded-md border border-border hover:bg-muted">
@@ -146,7 +154,7 @@ export function CalendarView({ events: initialEvents }: { events: CalendarEvent[
           <div className="grid grid-cols-7 gap-1 pt-1">
             {cells.map((c, i) => {
               const dayEvents = c.iso ? byDay.get(c.iso) ?? [] : [];
-              const today = c.iso === todayIso;
+              const isCur = c.iso === todayIso;
               return (
                 <button
                   key={i}
@@ -156,13 +164,13 @@ export function CalendarView({ events: initialEvents }: { events: CalendarEvent[
                   className={cn(
                     "group min-h-[78px] rounded-lg border border-transparent p-1.5 text-left align-top transition-colors",
                     c.day && "cursor-pointer border-border/60 bg-muted/20 hover:border-brand hover:bg-brand/5",
-                    today && "border-brand bg-brand/5",
+                    isCur && "border-brand bg-brand/5",
                   )}
                 >
                   {c.day && (
                     <>
                       <span className="flex items-center justify-between">
-                        <span className={cn("inline-flex size-6 items-center justify-center rounded-full text-xs font-medium", today ? "bg-brand font-bold text-white" : "text-foreground")}>
+                        <span className={cn("inline-flex size-6 items-center justify-center rounded-full text-xs font-medium", isCur ? "bg-brand font-bold text-white" : "text-foreground")}>
                           {c.day}
                         </span>
                         <Plus className="size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />

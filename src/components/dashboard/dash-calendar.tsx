@@ -4,13 +4,21 @@ import * as React from "react";
 import { ChevronLeft, ChevronRight, CalendarDays } from "lucide-react";
 import type { CalendarEvent } from "@/lib/types";
 import { monthName } from "@/lib/utils";
-import { seedToday } from "@/lib/seed-data";
 import { cn } from "@/lib/utils";
 
 const DOW = ["ISN", "SEL", "RAB", "KHA", "JUM", "SAB", "AHD"];
 
 export function DashCalendar({ events = [] }: { events?: CalendarEvent[] }) {
-  const [view, setView] = React.useState({ y: seedToday.year, m: seedToday.month });
+  // Ikut tarikh sebenar (auto). Gate dengan mount untuk elak hydration mismatch.
+  const [today, setToday] = React.useState<{ y: number; m: number; d: number } | null>(null);
+  React.useEffect(() => {
+    const n = new Date();
+    setToday({ y: n.getFullYear(), m: n.getMonth(), d: n.getDate() });
+  }, []);
+  const [view, setView] = React.useState(() => {
+    const n = new Date();
+    return { y: n.getFullYear(), m: n.getMonth() };
+  });
 
   const eventDays = React.useMemo(() => new Set(events.map((e) => e.date)), [events]);
 
@@ -36,7 +44,7 @@ export function DashCalendar({ events = [] }: { events?: CalendarEvent[] }) {
     });
 
   const isToday = (c: { day: number; current: boolean }) =>
-    c.current && view.y === seedToday.year && view.m === seedToday.month && c.day === seedToday.day;
+    !!today && c.current && view.y === today.y && view.m === today.m && c.day === today.d;
 
   return (
     <section className="rounded-xl border border-border bg-card p-5 shadow-card">
