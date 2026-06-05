@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Panduan Pasang — MyPI Command Center</title>
+<meta name="description" content="Panduan mudah memasang sistem MyPI Command Center anda sendiri — percuma, ~10 minit." />
+<style>
+  :root{ --green:#0F766E; --dark:#013220; --gold:#c9a227; --bg:#f6f8f7; --ink:#0f231c; --muted:#5b6b64; }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:720px;margin:0 auto;padding:0 18px 60px}
+  header{background:linear-gradient(135deg,var(--green),var(--dark));color:#fff;padding:46px 18px 54px;text-align:center;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:18px 18px}
+  header .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+    padding:5px 14px;border-radius:99px;font-size:13px;margin-bottom:12px}
+  header h1{margin:0;font-size:28px;font-weight:800}
+  header p{margin:8px 0 0;opacity:.9}
+  .dome{font-size:44px;margin-bottom:4px}
+  .card{background:#fff;border:1px solid #e3e9e6;border-radius:18px;padding:22px;margin-top:20px;
+    box-shadow:0 4px 18px rgba(1,50,32,.05)}
+  h2{font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  h2 .n{background:var(--green);color:#fff;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px;flex:0 0 auto}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+  ol{padding-left:22px;margin:0} ol li{margin:9px 0}
+  .pill{display:inline-block;background:#eef4f1;border:1px solid #d8e5df;border-radius:8px;padding:2px 8px;
+    font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--dark);word-break:break-all}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;text-decoration:none;
+    padding:12px 20px;border-radius:12px;font-weight:700;font-size:15px;transition:.15s;border:none;cursor:pointer}
+  .btn:hover{background:#0c5d57;transform:translateY(-1px)}
+  .btn.gold{background:var(--gold);color:var(--dark)} .btn.dark{background:#111}
+  .center{text-align:center;margin:16px 0 4px}
+  .note{background:#fff8e6;border:1px solid #f0dca6;border-radius:12px;padding:12px 14px;font-size:14px;color:#6b541a;margin-top:14px}
+  .easy{background:linear-gradient(135deg,#eafaf2,#d8f3e6);border:1px solid #bce8d2;border-radius:16px;padding:18px 20px;margin-top:20px}
+  .easy b{color:var(--dark)}
+  .need{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .need div{flex:1;min-width:140px;background:#eef4f1;border-radius:12px;padding:12px;font-size:13px;text-align:center}
+  .need b{display:block;font-size:15px;color:var(--dark);margin-bottom:2px}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}
+  a{color:var(--green)}
+</style>
+</head>
+<body>
+<header>
+  <div class="dome">🕌</div>
+  <div class="badge">Panduan Pemasangan • Percuma • ~10 minit</div>
+  <h1>MyPI Command Center</h1>
+  <p>Pusat Pengurusan Pendidikan Islam Digital</p>
+</header>
+
+<div class="wrap">
+
+  <!-- Pilihan paling mudah -->
+  <div class="easy">
+    😎 <b>Cara paling mudah:</b> Tak mahu pening dengan langkah teknikal?
+    <b>Minta penjual pasangkan untuk anda</b> — anda hanya terima link siap & kata laluan. Selesai!
+    <div style="margin-top:6px;color:var(--muted);font-size:13px">Atau, ikut 3 langkah mudah di bawah untuk pasang sendiri (percuma).</div>
+  </div>
+
+  <div class="card">
+    <h2>Anda perlukan 3 akaun percuma</h2>
+    <div class="need">
+      <div>🗄️<b>Supabase</b>simpan data</div>
+      <div>▲<b>Vercel</b>link laman</div>
+      <div>🐙<b>GitHub</b>log masuk Vercel</div>
+    </div>
+    <div class="note">💡 Tip: untuk ketiga-tiga, klik <b>"Continue with Google"</b> — paling pantas, tak perlu isi borang panjang.</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">1</span> Sediakan Data (Supabase)</h2>
+    <p class="sub">Hanya satu fail untuk di-RUN. Mudah.</p>
+    <ol>
+      <li>Pergi <a href="https://supabase.com" target="_blank">supabase.com</a> → <b>Start your project</b> → daftar (Google).</li>
+      <li><b>New Project</b> → Region <b>Singapore</b> → <b>Create</b> → tunggu ~2 minit.</li>
+      <li>Menu kiri → <b>SQL Editor</b> → <b>+ New query</b>.</li>
+      <li>Klik butang ini → <b>Ctrl+A</b> (pilih semua) → <b>Ctrl+C</b> (salin):
+        <div class="center"><a class="btn dark" href="https://raw.githubusercontent.com/NightSky-Lab/my-command-center/main/supabase/setup.sql" target="_blank">📄 Buka fail data (setup.sql)</a></div>
+        Tampal ke SQL Editor → klik <b>RUN ▶</b> (tunggu "Success").</li>
+      <li>Klik butang hijau <b>"Connect"</b> (atas) → <b>App Frameworks → Next.js</b>. Salin <b>2 nilai</b> (untuk Langkah 2).</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">2</span> Terbitkan Laman (Vercel)</h2>
+    <p class="sub">Satu klik — salinan dibuat ke akaun anda automatik.</p>
+    <div class="center">
+      <a class="btn gold" target="_blank"
+        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNightSky-Lab%2Fmy-command-center&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Kunci%20Supabase&project-name=mypi-command-center&repository-name=mypi-command-center">
+        ▲ &nbsp;Deploy ke Vercel
+      </a>
+    </div>
+    <ol>
+      <li>Log masuk guna <b>GitHub</b> → klik <b>Authorize/Continue</b> (kalau diminta).</li>
+      <li>Bila nampak <b>Environment Variables</b> → tampal 2 nilai dari Langkah 1.</li>
+      <li>Klik <b>Deploy</b> → tunggu ~2 minit → 🎉 dapat link!</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">✓</span> Langkah Akhir</h2>
+    <ol>
+      <li>Buka link → Log Masuk dengan kata laluan: <span class="pill">mypi2025</span></li>
+      <li><b>Tukar kata laluan</b> di <b>Profil → Keselamatan</b>.</li>
+      <li>Klik <b>"Panduan Ringkas"</b> dalam app untuk belajar cara guna setiap modul.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>❓ Tersangkut?</h2>
+    <p style="margin:0;color:var(--muted)">Hubungi penjual anda untuk bantuan, atau minta mereka pasangkan terus. Kebanyakan masalah ialah kunci Supabase tersalah tampal — semak di Vercel → Settings → Environment Variables.</p>
+  </div>
+
+  <footer>© MyPI Command Center — “Ilmu Itu Cahaya, Amalan Itu Bukti” 🕌</footer>
+</div>
+</body>
+</html>
