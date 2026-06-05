@@ -3,126 +3,168 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Panduan Pasang — MyPI Command Center</title>
-<meta name="description" content="Panduan mudah memasang sistem MyPI Command Center anda sendiri — percuma, ~10 minit." />
+<title>Pasang MyPI Command Center — Panduan Mudah</title>
+<meta name="description" content="Pasang sistem MyPI Command Center anda sendiri dalam <5 minit. Percuma." />
 <style>
-  :root{ --green:#0F766E; --dark:#013220; --gold:#c9a227; --bg:#f6f8f7; --ink:#0f231c; --muted:#5b6b64; }
-  *{box-sizing:border-box} html{scroll-behavior:smooth}
-  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-  .wrap{max-width:720px;margin:0 auto;padding:0 18px 60px}
-  header{background:linear-gradient(135deg,var(--green),var(--dark));color:#fff;padding:46px 18px 54px;text-align:center;
-    background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:18px 18px}
-  header .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
-    padding:5px 14px;border-radius:99px;font-size:13px;margin-bottom:12px}
-  header h1{margin:0;font-size:28px;font-weight:800}
-  header p{margin:8px 0 0;opacity:.9}
-  .dome{font-size:44px;margin-bottom:4px}
-  .card{background:#fff;border:1px solid #e3e9e6;border-radius:18px;padding:22px;margin-top:20px;
-    box-shadow:0 4px 18px rgba(1,50,32,.05)}
-  h2{font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
-  h2 .n{background:var(--green);color:#fff;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px;flex:0 0 auto}
-  .sub{color:var(--muted);font-size:14px;margin:0 0 14px}
-  ol{padding-left:22px;margin:0} ol li{margin:9px 0}
-  .pill{display:inline-block;background:#eef4f1;border:1px solid #d8e5df;border-radius:8px;padding:2px 8px;
-    font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--dark);word-break:break-all}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;text-decoration:none;
-    padding:12px 20px;border-radius:12px;font-weight:700;font-size:15px;transition:.15s;border:none;cursor:pointer}
-  .btn:hover{background:#0c5d57;transform:translateY(-1px)}
-  .btn.gold{background:var(--gold);color:var(--dark)} .btn.dark{background:#111}
-  .center{text-align:center;margin:16px 0 4px}
-  .note{background:#fff8e6;border:1px solid #f0dca6;border-radius:12px;padding:12px 14px;font-size:14px;color:#6b541a;margin-top:14px}
-  .easy{background:linear-gradient(135deg,#eafaf2,#d8f3e6);border:1px solid #bce8d2;border-radius:16px;padding:18px 20px;margin-top:20px}
-  .easy b{color:var(--dark)}
-  .need{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-  .need div{flex:1;min-width:140px;background:#eef4f1;border-radius:12px;padding:12px;font-size:13px;text-align:center}
-  .need b{display:block;font-size:15px;color:var(--dark);margin-bottom:2px}
-  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}
-  a{color:var(--green)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f4f7f6;color:#13241d;line-height:1.6}
+  .wrap{max-width:680px;margin:0 auto;padding:0 16px 56px}
+
+  /* HERO */
+  .hero{background:linear-gradient(150deg,#0F766E 0%,#013220 100%);color:#fff;text-align:center;
+    padding:44px 20px 40px;border-radius:0 0 28px 28px;box-shadow:0 10px 30px rgba(1,50,32,.25)}
+  .hero .dome{font-size:46px}
+  .hero .badge{display:inline-block;margin:10px 0 12px;background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);padding:5px 16px;border-radius:99px;font-size:13px;font-weight:600;color:#fff}
+  .hero h1{font-size:30px;font-weight:800;color:#fff;letter-spacing:.3px}
+  .hero p{margin-top:6px;font-size:15px;color:#e8f3ef}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;
+    padding:13px 22px;border-radius:14px;transition:.15s;cursor:pointer;border:none}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:#f0c84a;color:#013220;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+  .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-green{background:#0F766E;color:#fff}
+  .btn-dark{background:#1f2937;color:#fff}
+
+  /* WHY ACCOUNTS */
+  .why{background:#fff;border:1px solid #e3e9e6;border-radius:18px;padding:22px;margin-top:24px;box-shadow:0 4px 18px rgba(1,50,32,.05)}
+  .why h2{font-size:18px;color:#0F766E;margin-bottom:6px}
+  .why .lead{font-size:14.5px;color:#475a52;margin-bottom:14px}
+  .acc{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid #eef2f0}
+  .acc:first-of-type{border-top:none}
+  .acc .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 auto;color:#fff}
+  .acc b{font-size:15px} .acc span{font-size:13.5px;color:#5b6b64}
+  .reassure{margin-top:14px;background:#eafaf2;border:1px solid #bce8d2;border-radius:12px;padding:12px 14px;
+    font-size:13.5px;color:#1c6b45}
+
+  /* STEPS */
+  .steps-h{text-align:center;margin:34px 0 6px}
+  .steps-h h2{font-size:22px;color:#013220}
+  .steps-h p{font-size:14px;color:#5b6b64}
+  .step{position:relative;background:#fff;border:1px solid #e3e9e6;border-radius:18px;padding:20px 22px 20px 64px;
+    margin-top:16px;box-shadow:0 4px 18px rgba(1,50,32,.05)}
+  .step .num{position:absolute;left:18px;top:20px;width:34px;height:34px;border-radius:50%;
+    background:#0F766E;color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px}
+  .step h3{font-size:17px;color:#013220;margin-bottom:4px}
+  .step .mins{font-size:12px;color:#0F766E;font-weight:700;margin-bottom:10px}
+  .step ol{margin:0;padding-left:18px}
+  .step li{margin:8px 0;font-size:14.5px}
+  .step li b{color:#13241d}
+  .pill{display:inline-block;background:#eef4f1;border:1px solid #d8e5df;border-radius:7px;padding:1px 8px;
+    font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:#013220;word-break:break-all}
+  .step-btn{margin:10px 0 4px}
+  .note{margin-top:12px;background:#fff8e6;border:1px solid #f0dca6;border-radius:11px;padding:10px 13px;font-size:13px;color:#6b541a}
+  .platforms{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+  .plat{background:#f6faf8;border:1px solid #e1ece7;border-radius:11px;padding:10px 13px;font-size:14px}
+  .plat b{color:#0F766E}
+
+  footer{text-align:center;color:#5b6b64;font-size:13px;margin-top:30px;padding-top:16px;border-top:1px solid #e3e9e6}
+  a.inline{color:#0F766E;font-weight:600}
 </style>
 </head>
 <body>
-<header>
-  <div class="dome">🕌</div>
-  <div class="badge">Panduan Pemasangan • Percuma • ~10 minit</div>
-  <h1>MyPI Command Center</h1>
-  <p>Pusat Pengurusan Pendidikan Islam Digital</p>
-</header>
 
-<div class="wrap">
-
-  <!-- Pilihan paling mudah -->
-  <div class="easy">
-    😎 <b>Cara paling mudah:</b> Tak mahu pening dengan langkah teknikal?
-    <b>Minta penjual pasangkan untuk anda</b> — anda hanya terima link siap & kata laluan. Selesai!
-    <div style="margin-top:6px;color:var(--muted);font-size:13px">Atau, ikut 3 langkah mudah di bawah untuk pasang sendiri (percuma).</div>
-  </div>
-
-  <div class="card">
-    <h2>Anda perlukan 3 akaun percuma</h2>
-    <div class="need">
-      <div>🗄️<b>Supabase</b>simpan data</div>
-      <div>▲<b>Vercel</b>link laman</div>
-      <div>🐙<b>GitHub</b>log masuk Vercel</div>
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <div class="dome">🕌</div>
+    <div class="badge">✓ Percuma &nbsp;•&nbsp; Siap dalam ±5 minit</div>
+    <h1>MyPI Command Center</h1>
+    <p>Pusat Pengurusan Pendidikan Islam Digital</p>
+    <div class="hero-btns">
+      <a class="btn btn-ghost" href="https://my-command-center-gilt.vercel.app" target="_blank">🔍 Tengok Demo Dulu</a>
+      <a class="btn btn-gold" href="#mula">⬇️ Mula Pasang</a>
     </div>
-    <div class="note">💡 Tip: untuk ketiga-tiga, klik <b>"Continue with Google"</b> — paling pantas, tak perlu isi borang panjang.</div>
   </div>
 
-  <div class="card">
-    <h2><span class="n">1</span> Sediakan Data (Supabase)</h2>
-    <p class="sub">Hanya satu fail untuk di-RUN. Mudah.</p>
-    <ol>
-      <li>Pergi <a href="https://supabase.com" target="_blank">supabase.com</a> → <b>Start your project</b> → daftar (Google).</li>
-      <li><b>New Project</b> → Region <b>Singapore</b> → <b>Create</b> → tunggu ~2 minit.</li>
-      <li>Menu kiri → <b>SQL Editor</b> → <b>+ New query</b>.</li>
-      <li>Klik butang ini → <b>Ctrl+A</b> (pilih semua) → <b>Ctrl+C</b> (salin):
-        <div class="center"><a class="btn dark" href="https://raw.githubusercontent.com/NightSky-Lab/my-command-center/main/supabase/setup.sql" target="_blank">📄 Buka fail data (setup.sql)</a></div>
-        Tampal ke SQL Editor → klik <b>RUN ▶</b> (tunggu "Success").</li>
-      <li>Klik butang hijau <b>"Connect"</b> (atas) → <b>App Frameworks → Next.js</b>. Salin <b>2 nilai</b> (untuk Langkah 2).</li>
-    </ol>
-  </div>
+  <div class="wrap">
 
-  <div class="card">
-    <h2><span class="n">2</span> Terbitkan Laman (Vercel)</h2>
-    <p class="sub">Satu klik — salinan dibuat ke akaun anda automatik.</p>
-    <div class="center">
-      <a class="btn gold" target="_blank"
-        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNightSky-Lab%2Fmy-command-center&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Kunci%20Supabase&project-name=mypi-command-center&repository-name=mypi-command-center">
-        ▲ &nbsp;Deploy ke Vercel
-      </a>
+    <!-- ===== KENAPA PERLU AKAUN ===== -->
+    <div class="why">
+      <h2>Kenapa perlu daftar 3 akaun? 🤔</h2>
+      <p class="lead">Supaya sistem anda berfungsi & data selamat. Setiap satu <b>percuma</b> — daftar guna butang <b>"Continue with Google"</b> (10 saat). Anda <b>tak perlu</b> faham teknikalnya.</p>
+
+      <div class="acc">
+        <span class="ic" style="background:#1FA463">🗄️</span>
+        <div><b>Supabase</b> — <span>tempat <b>simpan data</b> anda (macam stor selamat di awan).</span></div>
+      </div>
+      <div class="acc">
+        <span class="ic" style="background:#111">▲</span>
+        <div><b>Vercel</b> — <span>beri laman anda <b>alamat (link)</b> di internet supaya boleh dibuka.</span></div>
+      </div>
+      <div class="acc">
+        <span class="ic" style="background:#333">🐙</span>
+        <div><b>GitHub</b> — <span>"kunci" untuk log masuk Vercel. Cuma daftar sekali.</span></div>
+      </div>
+
+      <div class="reassure">✅ Semua percuma & selamat. Tiada bayaran, tiada kad kredit. Data 100% milik anda.</div>
     </div>
-    <ol>
-      <li>Log masuk guna <b>GitHub</b> → klik <b>Authorize/Continue</b> (kalau diminta).</li>
-      <li>Bila nampak <b>Environment Variables</b> → tampal 2 nilai dari Langkah 1.</li>
-      <li>Klik <b>Deploy</b> → tunggu ~2 minit → 🎉 dapat link!</li>
-    </ol>
-  </div>
 
-  <div class="card">
-    <h2><span class="n">✓</span> Langkah Akhir</h2>
-    <ol>
-      <li>Buka link → Log Masuk dengan kata laluan: <span class="pill">mypi2025</span></li>
-      <li><b>Tukar kata laluan</b> di <b>Profil → Keselamatan</b>.</li>
-      <li>Klik <b>"Panduan Ringkas"</b> dalam app untuk belajar cara guna setiap modul.</li>
-    </ol>
-  </div>
+    <!-- ===== LANGKAH ===== -->
+    <div class="steps-h" id="mula">
+      <h2>3 Langkah Mudah</h2>
+      <p>Ikut satu-satu. Tak sampai 5 minit! 👇</p>
+    </div>
 
-  <div class="card">
-    <h2><span class="n">📲</span> Pasang Sebagai App (Ikon di Skrin)</h2>
-    <p class="sub">Supaya senang — tekan ikon, terus masuk (macam app sebenar). Buat langkah ini selepas anda dapat link &amp; log masuk.</p>
-    <ol>
-      <li><b>💻 Komputer (Chrome/Edge):</b> buka link anda → cari ikon <b>"Install"</b> (⊕ / skrin kecil) di hujung kanan bar alamat → klik <b>Install</b>. Ikon muncul di <b>Desktop &amp; Start Menu</b>.</li>
-      <li><b>📱 Android (Chrome):</b> buka link → menu <b>⋮</b> → <b>"Add to Home screen"</b> / <b>"Install app"</b> → <b>Add</b>.</li>
-      <li><b>🍎 iPhone (Safari):</b> buka link → butang <b>Share</b> (⬆️) → <b>"Add to Home Screen"</b> → <b>Add</b>.</li>
-    </ol>
-    <div class="note">🎉 Selepas ini, cukup <b>tekan ikon app</b> → terus buka sistem. Tak perlu taip link lagi!</div>
-  </div>
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Buat tempat simpan data</h3>
+      <div class="mins">⏱️ ±2 minit · Supabase</div>
+      <ol>
+        <li>Buka <a class="inline" href="https://supabase.com" target="_blank">supabase.com</a> dan daftar (guna Google).</li>
+        <li>Klik <b>New Project</b>. Pilih region <b>Singapore</b>, klik <b>Create</b>, tunggu ~2 minit.</li>
+        <li>Di menu kiri, buka <b>SQL Editor</b>, klik <b>New query</b>.</li>
+        <li>Tekan butang di bawah, pilih semua (<b>Ctrl+A</b>), salin (<b>Ctrl+C</b>), tampal ke SQL Editor, klik <b>RUN</b>:</li>
+      </ol>
+      <div class="step-btn">
+        <a class="btn btn-dark" href="https://raw.githubusercontent.com/NightSky-Lab/my-command-center/main/supabase/setup.sql" target="_blank">📄 Buka Fail Data</a>
+      </div>
+      <ol start="5">
+        <li>Klik butang <b>Connect</b> (di atas) → pilih <b>Next.js</b> → salin <b>2 kunci</b> yang dipaparkan (kita guna di Langkah 2).</li>
+      </ol>
+    </div>
 
-  <div class="card">
-    <h2>❓ Tersangkut?</h2>
-    <p style="margin:0;color:var(--muted)">Hubungi penjual anda untuk bantuan, atau minta mereka pasangkan terus. Kebanyakan masalah ialah kunci Supabase tersalah tampal — semak di Vercel → Settings → Environment Variables.</p>
-  </div>
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="num">2</div>
+      <h3>Terbitkan laman anda</h3>
+      <div class="mins">⏱️ ±2 minit · Vercel</div>
+      <ol>
+        <li>Tekan butang <b>Deploy</b> di bawah.</li>
+        <li>Log masuk guna <b>GitHub</b> (klik <b>Authorize</b> jika diminta).</li>
+        <li>Di ruangan <b>Environment Variables</b>, tampal <b>2 kunci</b> dari Langkah 1.</li>
+        <li>Klik <b>Deploy</b> dan tunggu ~2 minit. 🎉 Anda dapat <b>link laman anda</b>!</li>
+      </ol>
+      <div class="step-btn">
+        <a class="btn btn-gold" href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNightSky-Lab%2Fmy-command-center&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Kunci%20Supabase&project-name=mypi-command-center&repository-name=mypi-command-center" target="_blank">▲ Deploy ke Vercel</a>
+      </div>
+      <div class="note">💡 Pastikan 2 kunci ditampal betul (tiada ruang kosong di hujung).</div>
+    </div>
 
-  <footer>© MyPI Command Center — “Ilmu Itu Cahaya, Amalan Itu Bukti” 🕌</footer>
-</div>
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Masuk & letak ikon app</h3>
+      <div class="mins">⏱️ ±1 minit</div>
+      <ol>
+        <li>Buka link anda. Log masuk dengan kata laluan: <span class="pill">mypi2025</span></li>
+        <li><b>Tukar kata laluan</b> di <b>Profil → Keselamatan</b>.</li>
+        <li>Pasang sebagai app supaya senang buka (tekan ikon, terus masuk):</li>
+      </ol>
+      <div class="platforms">
+        <div class="plat"><b>💻 Komputer:</b> klik ikon <b>Install</b> (⊕) di bar alamat → Install.</div>
+        <div class="plat"><b>📱 Android:</b> menu ⋮ → <b>Add to Home screen</b>.</div>
+        <div class="plat"><b>🍎 iPhone:</b> butang Share ⬆️ → <b>Add to Home Screen</b>.</div>
+      </div>
+      <div class="note">🎉 Selepas ini, cukup tekan ikon → terus masuk sistem. Klik <b>"Panduan Ringkas"</b> dalam app untuk belajar cara guna.</div>
+    </div>
+
+    <footer>
+      Tersangkut? Hubungi penjual anda — atau minta mereka <b>pasangkan terus</b> untuk anda. 😊<br>
+      © MyPI Command Center — “Ilmu Itu Cahaya, Amalan Itu Bukti” 🕌
+    </footer>
+  </div>
 </body>
 </html>
