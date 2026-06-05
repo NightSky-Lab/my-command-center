@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 97%;
+    --foreground: 160 30% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 160 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 30% 12%;
+
+    --primary: 156 96% 10%;
+    --primary-foreground: 48 60% 96%;
+
+    --secondary: 152 30% 94%;
+    --secondary-foreground: 156 60% 14%;
+
+    --muted: 210 16% 93%;
+    --muted-foreground: 215 16% 42%;
+
+    --accent: 152 40% 92%;
+    --accent-foreground: 156 60% 14%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 86%;
+    --ring: 156 96% 14%;
+
+    --radius: 0.75rem;
+
+    /* MyPI brand — overridable by the CMS (site_settings).
+       Hex vars feed inline styles / SVG; *-rgb channels feed Tailwind so
+       opacity modifiers like bg-brand/10 work correctly. */
+    --brand: #013220;
+    --brand-dark: #004225;
+    --brand-light: #0a5c3a;
+    --brand-gold: #c9a227;
+    --brand-gold-soft: #e7c66b;
+    --brand-rgb: 1 50 32;
+    --brand-dark-rgb: 0 66 37;
+    --brand-light-rgb: 10 92 58;
+    --brand-gold-rgb: 201 162 39;
+    --brand-gold-soft-rgb: 231 198 107;
+
+    --font-sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-serif: "Georgia", "Times New Roman", serif;
+  }
+
+  .dark {
+    --background: 160 28% 7%;
+    --foreground: 48 30% 92%;
+
+    --card: 160 26% 10%;
+    --card-foreground: 48 30% 92%;
+
+    --popover: 160 26% 10%;
+    --popover-foreground: 48 30% 92%;
+
+    --primary: 152 40% 45%;
+    --primary-foreground: 160 40% 8%;
+
+    --secondary: 160 20% 16%;
+    --secondary-foreground: 48 30% 92%;
+
+    --muted: 160 18% 16%;
+    --muted-foreground: 152 12% 65%;
+
+    --accent: 160 20% 18%;
+    --accent-foreground: 48 30% 92%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 160 18% 20%;
+    --input: 160 18% 22%;
+    --ring: 152 40% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .islamic-pattern {
+    background-color: var(--brand-dark);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c9a227' stroke-opacity='0.10' stroke-width='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3Cpath d='M30 12l18 18-18 18-18-18z'/%3E%3Ccircle cx='30' cy='30' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 9999px;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
